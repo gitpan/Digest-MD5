@@ -1,4 +1,3 @@
-#!perl
 print "1..5\n";
 
 use strict;
@@ -15,8 +14,8 @@ a027e5a4a371d28d660c0e62097752b2  MD5.pm
 754b9db19f79dbc4992f7166eb0f37ce  rfc1321.txt
 EOT
 
-if (!(-f "README") && -f "::README") {
-   chdir("::") or die "Can't chdir: $!";
+if (!(-f "README") && -f "../README") {
+   chdir("..") or die "Can't chdir: $!";
 }
 
 my $testno = 0;
