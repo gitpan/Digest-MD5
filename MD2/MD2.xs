@@ -1,4 +1,4 @@
-/* $Id: MD2.xs,v 1.2 1998/10/28 12:31:19 aas Exp $ */
+/* $Id: MD2.xs,v 1.4 1998/11/04 22:22:10 aas Exp $ */
 
 /* 
  * This library is free software; you can redistribute it and/or
@@ -37,6 +37,11 @@ extern "C" {
 #include "XSUB.h"
 #ifdef __cplusplus
 }
+#endif
+
+#include "patchlevel.h"
+#if PATCHLEVEL < 5 && SUBVERSION < 5
+   #define PL_na na
 #endif
 
 typedef struct {
@@ -279,7 +284,7 @@ new(xclass)
 	MD2_CTX* context;
     PPCODE:
 	if (!SvROK(xclass)) {
-	    char *sclass = SvPV(xclass, na);
+	    char *sclass = SvPV(xclass, PL_na);
 	    New(55, context, 1, MD2_CTX);
 	    ST(0) = sv_newmortal();
 	    sv_setref_pv(ST(0), sclass, (void*)context);

@@ -1,10 +1,22 @@
+1998-11-04   Gisle Aas <aas@sn.no>
+
+   Release 2.00.
+
+   Taken out Digest::SHA1 as this module will be provided from Uwe
+   Hollerbach later.
+
+   Some tweaks to MD2.xs and MD5.xs since "na" disappeared in
+   perl5.005_53
+
+
+
 1998-10-30   Gisle Aas <aas@sn.no>
 
    Release 1.99_60
 
-   We had now introduced a small compilation problems for big endian
-   systems with free U32 alignment.  Bug reported, an fix suggested by
-   Paul J. Schinder <schinder@pobox.com>.
+   The 1.99_59 release introduced compilation problems for big-endian
+   systems with free U32 alignment.  Bug reported, and fix suggested
+   by Paul J. Schinder <schinder@pobox.com>.
 
 
 
