@@ -1,4 +1,4 @@
-/* $Id: MD5.xs,v 1.33 2002/04/25 17:10:30 gisle Exp $ */
+/* $Id: MD5.xs,v 1.34 2002/05/01 23:30:28 gisle Exp $ */
 
 /* 
  * This library is free software; you can redistribute it and/or
@@ -102,10 +102,10 @@ extern "C" {
 #ifndef BYTESWAP
 static void u2s(U32 u, U8* s)
 {
-    *s++ = u         & 0xFF;
-    *s++ = (u >>  8) & 0xFF;
-    *s++ = (u >> 16) & 0xFF;
-    *s   = (u >> 24) & 0xFF;
+    *s++ = (U8)(u         & 0xFF);
+    *s++ = (U8)((u >>  8) & 0xFF);
+    *s++ = (U8)((u >> 16) & 0xFF);
+    *s   = (U8)((u >> 24) & 0xFF);
 }
 
 #define s2u(s,u) ((u) =  (U32)(*s)            |  \
