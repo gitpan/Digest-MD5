@@ -2,21 +2,20 @@ print "1..5\n";
 
 use strict;
 use Digest::MD5 qw(md5 md5_hex md5_base64);
-use File::Spec::Functions;
 
 #
 # This is the output of: 'md5sum Changes README MD5.pm MD5.xs rfc1321.txt'
 #
 my $EXPECT = <<EOT;
-ca11db67c1a3530e8d198c023dda6820  Changes
-17b285b956888a42ba19d841b1075b07  README
-4ea15855bef8a7797efda8e8c028d9f3  MD5.pm
-3412e2425527d6b822fe1217a2fdaadd  MD5.xs
-f9a35714ee1d1d0c5a3a80f4dbea956a  rfc1321.txt
+7dffb2085cd8f87a9e99e7c8f0c124ac  Changes
+3bb95afbdd85db7bb46b230b81c10466  README
+3a22457ba4497c09efebef61048bb593  MD5.pm
+709a74b880357389287af3c9936f97a4  MD5.xs
+754b9db19f79dbc4992f7166eb0f37ce  rfc1321.txt
 EOT
 
-if (!(-f "README") && -f catfile(updir, "README")) {
-   chdir(updir) or die "Can't chdir: $!";
+if (!(-f "README") && -f "../README") {
+   chdir("..") or die "Can't chdir: $!";
 }
 
 my $testno = 0;
