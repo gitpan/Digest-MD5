@@ -1,5 +1,11 @@
 README			Guess what?
 MANIFEST		This file
+MD2/MD2.pm		Digest::MD2 Perl Module
+MD2/MD2.xs		MD2 XS implementation
+MD2/Makefile.PL		Perl Makefile builder
+MD2/rfc1319.txt		The MD2 Message-Digest Algorithm
+MD2/t/md2.t		Test if Digest::MD2 works
+MD2/typemap		Supplementary typemap
 MD5.pm			Digest::MD5 Perl Module
 lib/MD5.pm		MD5 backwards compatibility stuff
 lib/Digest.pm		Loading frontend
@@ -15,6 +21,7 @@ rfc2104.txt		HMAC: Keyed-Hashing for Message Authentication
 t/digest.t		Test Digest.pm loader
 t/files.t		Check a few files.
 t/md5.t			Test suite using standard Perl conventions
+t/md5-aaa.t		Exercise padding code
 t/rfc2202.t		Test Cases for HMAC-MD5 and HMAC-SHA-1
 t/sha1.t		The Digest::SHA1 wrapper
 Changes			Version history
