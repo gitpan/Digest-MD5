@@ -11,7 +11,7 @@
 **	GNU or Artistic licences. See the file MD5.pm for more details.
 */
 
-/* $Id: MD5.xs,v 1.10 1998/10/24 13:27:00 aas Exp $ */
+/* $Id: MD5.xs,v 1.11 1998/10/24 22:59:17 aas Exp $ */
 
 #ifdef __cplusplus
 extern "C" {
@@ -151,7 +151,10 @@ static unsigned char PADDING[64] = {
 static void memcpy_byteswap(long *dest, const long* src, unsigned int len)
 {
     len /= 4;
-    while (len--) *dest++ = htovl(*src++);
+    while (len--) {
+	*dest++ = htovl(*src);
+	src++;
+    }
 }
 
 #define MEMCPY_BYTESWAP(d,s,l) memcpy_byteswap((long*)(d), (long*)(s), (l))

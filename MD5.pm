@@ -3,7 +3,7 @@ package Digest::MD5;
 use strict;
 use vars qw($VERSION @ISA @EXPORT_OK);
 
-$VERSION = '1.9955';  # $Date: 1998/10/24 22:25:38 $
+$VERSION = '1.9956';  # $Date: 1998/10/24 22:58:22 $
 
 require Exporter;
 *import = \&Exporter::import;
