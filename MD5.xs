@@ -1,4 +1,4 @@
-/* $Id: MD5.xs,v 1.37 2003/03/09 15:20:43 gisle Exp $ */
+/* $Id: MD5.xs,v 1.39 2003/07/05 05:25:37 gisle Exp $ */
 
 /* 
  * This library is free software; you can redistribute it and/or
@@ -44,14 +44,17 @@ extern "C" {
 }
 #endif
 
-#ifndef PATCHLEVEL
+#ifndef PERL_VERSION
 #    include <patchlevel.h>
 #    if !(defined(PERL_VERSION) || (SUBVERSION > 0 && defined(PATCHLEVEL)))
 #        include <could_not_find_Perl_patchlevel.h>
 #    endif
+#    define PERL_REVISION       5
+#    define PERL_VERSION        PATCHLEVEL
+#    define PERL_SUBVERSION     SUBVERSION
 #endif
 
-#if PATCHLEVEL <= 4 && !defined(PL_dowarn)
+#if PERL_VERSION <= 4 && !defined(PL_dowarn)
    #define PL_dowarn dowarn
 #endif
 
@@ -633,10 +636,17 @@ addfile(self, fh)
 		    XSRETURN(1);  /* self */
 	    }
 
-	    /* Process blocks until EOF */
+	    /* Process blocks until EOF or error */
             while ( (n = PerlIO_read(fh, buffer, sizeof(buffer)))) {
 	        MD5Update(context, buffer, n);
 	    }
+
+	    if (PerlIO_error(fh)) {
+		croak("Reading from filehandle failed");
+	    }
+	}
+	else {
+	    croak("No filehandle passed");
 	}
 	XSRETURN(1);  /* self */
 
