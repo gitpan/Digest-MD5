@@ -1,4 +1,4 @@
-/* $Id: MD5.xs,v 1.22 1999/03/05 21:12:46 gisle Exp $ */
+/* $Id: MD5.xs,v 1.23 1999/03/26 13:27:49 gisle Exp $ */
 
 /* 
  * This library is free software; you can redistribute it and/or
@@ -313,9 +313,9 @@ MD5Transform(MD5_CTX* ctx, const U8* buf, STRLEN blocks)
 	II (b, c, d, a,  9, S44, 0xeb86d391); /* 64 */
 
 	A += a;  TRUNC32(A);
-	B += b;  TRUNC32(A);
-	C += c;  TRUNC32(A);
-	D += d;  TRUNC32(A);
+	B += b;  TRUNC32(B);
+	C += c;  TRUNC32(C);
+	D += d;  TRUNC32(D);
 
     } while (--blocks);
     ctx->A = A;
