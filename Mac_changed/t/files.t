@@ -7,16 +7,15 @@ use Digest::MD5 qw(md5 md5_hex md5_base64);
 # This is the output of: 'md5sum Changes README MD5.pm MD5.xs rfc1321.txt'
 #
 my $EXPECT = <<EOT;
-59cf695b206cac879764b1690ae7a4cc  Changes
-2ecff1d23a3ce71a63d14785b61176b3  README
-320b9a8bfb9d829e2f4fc765f9bd968e  MD5.pm
-37cca4e3e74b661610d4c0bfd492e5f5  MD5.xs
-f9a35714ee1d1d0c5a3a80f4dbea956a  rfc1321.txt
+b9071b32f32f43369a924eccf577d9c3  Changes
+95b8301e390d5a12ea5a544e9dfa89a0  README
+59a47ddf31ab471af4e4ab644fde3338  MD5.pm
+709a74b880357389287af3c9936f97a4  MD5.xs
+754b9db19f79dbc4992f7166eb0f37ce  rfc1321.txt
 EOT
 
-use File::Spec::Functions;
-if (!(-f "README") && -f catfile(updir, "README")) {
-   chdir(updir) or die "Can't chdir: $!";
+if (!(-f "README") && -f "../README") {
+   chdir("..") or die "Can't chdir: $!";
 }
 
 my $testno = 0;
