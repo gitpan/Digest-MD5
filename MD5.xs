@@ -1,4 +1,4 @@
-/* $Id: MD5.xs,v 1.16 1998/10/28 20:33:45 aas Exp $ */
+/* $Id: MD5.xs,v 1.17 1998/10/30 17:12:35 aas Exp $ */
 
 /* 
  * This library is free software; you can redistribute it and/or
@@ -200,7 +200,7 @@ MD5Transform(MD5_CTX* ctx, const U8* buf, STRLEN blocks)
     U32 C = ctx->C;
     U32 D = ctx->D;
 
-#if BYTEORDER == 0x1234 && !defined(U32_ALIGNMENT_REQUIRED)
+#ifndef U32_ALIGNMENT_REQUIRED
     const U32 *x = (U32*)buf;  /* really just type casting */
 #endif
 

@@ -25,14 +25,17 @@ sub free_u32_alignment
     open(ALIGN_TEST, ">u32align.c") or die "$!";
     print ALIGN_TEST <<'EOT'; close(ALIGN_TEST);
 /*--------------------------------------------------------------*/
+/*  This program allocates a buffer of U8 (char) and then tries */
+/*  to access it through a U32 pointer at every offset.  The    */
+/*  program  is expected to die with a bus error/seg fault for  */
+/*  machines that does not support unaligned integer read/write */
+/*--------------------------------------------------------------*/
+
 #include <stdio.h>
-
-/* some perl headers */
 #include "EXTERN.h"
-#include "config.h"
-#include "handy.h"
+#include "perl.h"
 
-int main(int argc, char* argv[])
+int main(int argc, char** argv, char** env)
 {
 #if BYTEORDER == 0x1234 || BYTEORDER == 0x4321
     U8 buf[] = "\0\0\0\1\0\0\0\0";
@@ -53,8 +56,8 @@ int main(int argc, char* argv[])
 	      )
 	   )
 	{
-	    printf("This should not happen!\n");
-	    exit(3);
+	    printf("read failed (%x)\n", *up);
+	    exit(2);
 	}
     }
 
@@ -63,8 +66,8 @@ int main(int argc, char* argv[])
 	up = (U32*)(buf + i);
 	*up = 0xBeef;
 	if (*up != 0xBeef) {
-	    printf("write failed\n");
-	    exit(2);
+	    printf("write failed (%x)\n", *up);
+	    exit(3);
 	}
     }
 
