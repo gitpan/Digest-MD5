@@ -3,7 +3,7 @@ package Digest::MD5;
 use strict;
 use vars qw($VERSION @ISA @EXPORT_OK);
 
-$VERSION = '2.12';  # $Date: 2000/09/18 14:26:37 $
+$VERSION = '2.13';  # $Date: 2001/03/14 05:50:15 $
 
 require Exporter;
 *import = \&Exporter::import;
@@ -120,6 +120,9 @@ calculate the digest for.  The return value is the $md5 object itself.
 The $io_handle is read until EOF and the content is appended to the
 message we calculate the digest for.  The return value is the $md5
 object itself.
+
+In most cases you want to make sure that the $io_handle is set up to
+be in binmode().
 
 =item $md5->digest
 
@@ -256,6 +259,6 @@ licenses.
 The original MD5 interface was written by Neil Winton
 (C<N.Winton@axion.bt.co.uk>).
 
-This release was made by Gisle Aas <gisle@aas.no>
+This release was made by Gisle Aas <gisle@ActiveState.com>
 
 =cut
