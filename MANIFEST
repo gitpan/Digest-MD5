@@ -2,16 +2,21 @@ README			Guess what?
 MANIFEST		This file
 MD5.pm			Digest::MD5 Perl Module
 lib/MD5.pm		MD5 backwards compatibility stuff
+lib/Digest.pm		Loading frontend
 lib/Digest/HMAC.pm      HMAC implementation
 lib/Digest/HMAC_MD5.pm  HMAC using MD5
+lib/Digest/HMAC_SHA1.pm HMAC using SHA-1
+lib/Digest/SHA1.pm      SHA-1 implementation
 MD5.xs			MD5 Perl 'XS' source file
 typemap			Supplementary typemap
 Makefile.PL		Perl Makefile builder
 rfc1321.txt		The MD5 Message-Digest Algorithm
 rfc2104.txt		HMAC: Keyed-Hashing for Message Authentication
+t/digest.t		Test Digest.pm loader
 t/files.t		Check a few files.
 t/md5.t			Test suite using standard Perl conventions
 t/rfc2202.t		Test Cases for HMAC-MD5 and HMAC-SHA-1
+t/sha1.t		The Digest::SHA1 wrapper
 Changes			Version history
 examples/mddriver.pl	Example driver script after mddriver.c in RFC 1321
 examples/twdigest.pl	Example code to format a digest like Tripwire
