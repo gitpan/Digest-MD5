@@ -1,0 +1,41 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+
+This is a MacPerl build of Digest::MD5.  You need a recent MacPerl
+(such as MacPerl 5.2.0r4, the latest as of this build) and either
+the PPC MacPerl or the CFM68K MacPerl (because dynamic loading
+is not avialable in the non-CFM 68K MacPerl).
+
+You might also need to run autosplit:
+
+    #!perl -w
+    use AutoSplit;
+    $dir = "$ENV{MACPERL}site_perl";
+    foreach (qw(MD5 Digest Digest:HMAC Digest:HMAC_MD5
+        Digest:HMAC_SHA1 Digest:MD2 Digest:MD5)) {
+        autosplit("$dir:$_.pm","$dir:auto",0,1,1);
+    }
+
+Also recommended are Paul Schinder's Fixed Library Routines,
+available from his web site:
+
+    http://pobox.com/~schinder/MacPerl.html
+
+This stuff is always available on CPAN and on pudge.net.
+
+    http://pudge.net/macperl/
+    http://www.perl.com/CPAN/authors/id/CNANDOR/
+
+- -- 
+Chris Nandor          mailto:pudge@pobox.com         http://pudge.net/
+%PGPKey = ('B76E72AD', [1024, '0824090B CE73CA10  1FF77F13 8180B6B6'])
+
+-----BEGIN PGP SIGNATURE-----
+Version: PGPfreeware 5.0 for non-commercial use <http://www.pgp.com>
+Charset: noconv
+
+iQCVAwUBNocEoyhcZja3bnKtAQG/vgP/b5xqVWJRqQi0/3PmVrrPUnDIBUxuo4c5
+dpXLSTEbtobxoVQhWkhit0VqFF+m7Vy2gy0iGsqDuTQsYM9+cKqWAk+OSEi5BhV7
+I9Mcm546mOPJmmrKgZZJF8V3pO6ILbMN9zCkeqTUT17AIh6WgXd7mYcEDo+9ku/R
+gGbfLDnQGPI=
+=wO2z
+-----END PGP SIGNATURE-----
