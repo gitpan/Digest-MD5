@@ -1,16 +1,16 @@
 print "1..5\n";
 
 use strict;
-use Digest::MD5 qw(md5_bin md5_hex md5_base64);
+use Digest::MD5 qw(md5 md5_hex md5_base64);
 
 #
 # This is the output of: 'md5sum Changes README MD5.pm MD5.xs rfc1321.txt'
 #
 my $EXPECT = <<EOT;
-13ca77d1c915ada01d8d35ea029c5865  Changes
+a5f3bceb7b14a8bb8dd227a2150d6bd3  Changes
 1adb532cdeaaf324e9ed19a09dbf8f22  README
-463529294c6fc95b003856577221608a  MD5.pm
-401a5cf3afd0c400b7f6ac3b9063fcb1  MD5.xs
+ebf75c93edaf30c35a5ab92bae0376f3  MD5.pm
+1c202dcb5e5cdfe6df2a9ed95bbca29e  MD5.xs
 754b9db19f79dbc4992f7166eb0f37ce  rfc1321.txt
 EOT
 
@@ -54,8 +54,8 @@ for (split /^/, $EXPECT) {
      }
 
      my $data = cat_file($file);
-     if (md5_bin($data) ne $md5bin) {
-	 print "$file: md5_bin() failed\n";
+     if (md5($data) ne $md5bin) {
+	 print "$file: md5() failed\n";
 	 $failed++;
      }
      if (md5_hex($data) ne $md5hex) {
@@ -81,8 +81,8 @@ for (split /^/, $EXPECT) {
      }
 
      my @data = split //, $data;
-     if (md5_bin(@data) ne $md5bin) {
-	 print "$file: md5_bin(\@data) failed\n";
+     if (md5(@data) ne $md5bin) {
+	 print "$file: md5(\@data) failed\n";
 	 $failed++;
      }
      if (Digest::MD5->new->add(@data)->digest ne $md5bin) {

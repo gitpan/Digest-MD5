@@ -1,13 +1,13 @@
 package Digest::MD5;
 
 use strict;
-use vars qw($VERSION @ISA @EXPORT);
+use vars qw($VERSION @ISA @EXPORT_OK);
 
-$VERSION = '1.9953';  # $Date: 1998/10/23 12:23:46 $
+$VERSION = '1.9954';  # $Date: 1998/10/24 13:55:41 $
 
 require Exporter;
 *import = \&Exporter::import;
-@EXPORT = qw(md5_bin md5_hex md5_base64);
+@EXPORT_OK = qw(md5 md5_hex md5_base64);
 
 require DynaLoader;
 @ISA=qw(DynaLoader);
@@ -25,15 +25,15 @@ Digest::MD5 - Perl interface to the MD5 Message-Digest Algorithm
 =head1 SYNOPSIS
 
  # Procedural style
- use Digest::MD5  qw(md5_bin md5_hex md5_base64);
+ use Digest::MD5  qw(md5 md5_hex md5_base64);
 
- $digest = unpack("H*", md5_bin($data));
+ $digest = unpack("H*", md5($data));
  $digest = md5_hex($data);
  $digest = md5_base64($data);
     
 
  # OO style
- use Digest::MD5 ();
+ use Digest::MD5;
 
  $ctx = Digest::MD5->new;
 
@@ -81,22 +81,22 @@ encoding.
 
 =head1 FUNCTIONS
 
-The following functions are exported.
+The following functions can be exported on request.
 
 =over 4
 
-=item md5_bin($data,...)
+=item md5($data,...)
 
 This function will concatenate all the data given as argument as the
 message and return the binary MD5 digest.
 
 =item md5_hex($data,...)
 
-Same as md5_bin(), but will return the digest in hexadecimal form.
+Same as md5(), but will return the digest in hexadecimal form.
 
 =item md5_base64($data,...)
 
-Same as md5_bin(), but will return the digest as a base64 encoded string.
+Same as md5(), but will return the digest as a base64 encoded string.
 
 =back
 
@@ -165,7 +165,7 @@ The above example would print out the message
 provided that the implementation is working correctly.  The same
 checksum can also be calculated in OO style:
 
-    use Digest::MD5 ();
+    use Digest::MD5;
     
     $md5 = Digest::MD5->new;
     $md5->add('foo', 'bar');
@@ -180,7 +180,7 @@ We can handle messages of any size.
 
 This is useful when calculating checksum for files:
 
-    use Digest::MD5 ();
+    use Digest::MD5;
 
     my $file = shift || "/etc/passwd";
     open(FILE, $file) or die "Can't open '$file': $!";
@@ -195,7 +195,7 @@ This is useful when calculating checksum for files:
 
 Or we can use the builtin addfile method to read the file much faster:
 
-    use Digest::MD5 ();
+    use Digest::MD5;
 
     my $file = shift || "/etc/passwd";
     open(FILE, $file) or die "Can't open '$file': $!";
@@ -250,7 +250,7 @@ documentation and/or software.
 
 This copyright does not prohibit distribution of any version of Perl
 containing this extension under the terms of the GNU or Artistic
-licences.
+licenses.
 
 =head1 AUTHORS
 

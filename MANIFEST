@@ -1,4 +1,5 @@
 README			Guess what?
+HMAC_MD5.pm
 MANIFEST		This file
 MD5.pm			Digest::MD5 Perl Module
 lib/MD5.pm		MD5 backwards compatibility stuff
