@@ -3,7 +3,7 @@ package Digest::MD5;
 use strict;
 use vars qw($VERSION @ISA @EXPORT_OK);
 
-$VERSION = '2.10';  # $Date: 2000/08/18 08:44:24 $
+$VERSION = '2.11';  # $Date: 2000/08/19 17:37:00 $
 
 require Exporter;
 *import = \&Exporter::import;
@@ -19,7 +19,7 @@ if ($@) {
     # Try to load the pure perl version
     require Digest::Perl::MD5;
 
-    Digest::Perl::MD5->import qw(md5 md5_hex md5_base64);
+    Digest::Perl::MD5->import(qw(md5 md5_hex md5_base64));
     push(@ISA, "Digest::Perl::MD5");  # make OO interface work
 }
 else {
