@@ -1,4 +1,4 @@
-/* $Id: MD5.xs,v 1.27 2001/07/18 13:15:47 gisle Exp $ */
+/* $Id: MD5.xs,v 1.28 2001/07/20 03:49:57 gisle Exp $ */
 
 /* 
  * This library is free software; you can redistribute it and/or
@@ -623,7 +623,7 @@ md5(...)
     PPCODE:
 	MD5Init(&ctx);
 	if (PL_dowarn && items > 1) {
-	    data = SvPV(ST(0), len);
+	    data = (unsigned char *)SvPV(ST(0), len);
 	    if (len == 11 && memEQ("Digest::MD5", data, 11)) {
 	         char *f = (ix == F_BIN) ? "md5" :
                            (ix == F_HEX) ? "md5_hex" : "md5_base64";
