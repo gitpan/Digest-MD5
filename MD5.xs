@@ -1,4 +1,4 @@
-/* $Id: MD5.xs,v 1.26 2000/09/18 14:27:44 gisle Exp $ */
+/* $Id: MD5.xs,v 1.27 2001/07/18 13:15:47 gisle Exp $ */
 
 /* 
  * This library is free software; you can redistribute it and/or
@@ -34,11 +34,6 @@
  * documentation and/or software.
  */
 
-#include <ConditionalMacros.h>
-#if PRAGMA_IMPORT
-#pragma import on
-#endif
-
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -49,8 +44,9 @@ extern "C" {
 }
 #endif
 
-#if PRAGMA_IMPORT
-#pragma import off
+#include "patchlevel.h"
+#if PATCHLEVEL <= 4 && !defined(PL_dowarn)
+   #define PL_dowarn dowarn
 #endif
 
 /*#define MD5_DEBUG /**/
@@ -626,6 +622,14 @@ md5(...)
 	unsigned char digeststr[16];
     PPCODE:
 	MD5Init(&ctx);
+	if (PL_dowarn && items > 1) {
+	    data = SvPV(ST(0), len);
+	    if (len == 11 && memEQ("Digest::MD5", data, 11)) {
+	         char *f = (ix == F_BIN) ? "md5" :
+                           (ix == F_HEX) ? "md5_hex" : "md5_base64";
+	         warn("&Digest::MD5::%s function probably called as method", f);
+            }
+	}
 	for (i = 0; i < items; i++) {
 	    data = (unsigned char *)(SvPV(ST(i), len));
 	    MD5Update(&ctx, data, len);
