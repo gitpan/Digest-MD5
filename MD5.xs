@@ -34,6 +34,11 @@
  * documentation and/or software.
  */
 
+#include <ConditionalMacros.h>
+#if PRAGMA_IMPORT
+#pragma import on
+#endif
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -42,6 +47,10 @@ extern "C" {
 #include "XSUB.h"
 #ifdef __cplusplus
 }
+#endif
+
+#if PRAGMA_IMPORT
+#pragma import off
 #endif
 
 #include "patchlevel.h"
@@ -624,7 +633,7 @@ md5(...)
 	MD5Init(&ctx);
 	if (PL_dowarn && items > 1) {
 	    data = (unsigned char *)SvPV(ST(0), len);
-	    if (len == 11 && memEQ("Digest::MD5", data, 11)) {
+	    if (len == 11 && memEQ("Digest::MD5", (char *)data, 11)) {
 	         char *f = (ix == F_BIN) ? "md5" :
                            (ix == F_HEX) ? "md5_hex" : "md5_base64";
 	         warn("&Digest::MD5::%s function probably called as method", f);
