@@ -12,7 +12,7 @@ WriteMakefile(
     @extra,
     'dist'         => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
 );
-#exit;
+exit;
 
 #--------------
 
