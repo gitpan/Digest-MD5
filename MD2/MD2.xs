@@ -1,4 +1,4 @@
-/* $Id: MD2.xs,v 1.7 1999/02/27 21:25:11 gisle Exp $ */
+/* $Id: MD2.xs,v 1.8 1999/03/05 21:13:03 gisle Exp $ */
 
 /* 
  * This library is free software; you can redistribute it and/or
@@ -280,8 +280,8 @@ new(xclass)
 	MD2_CTX* context;
     PPCODE:
 	if (!SvROK(xclass)) {
-	    STRLEN na;
-	    char *sclass = SvPV(xclass, na);
+	    STRLEN my_na;
+	    char *sclass = SvPV(xclass, my_na);
 	    New(55, context, 1, MD2_CTX);
 	    ST(0) = sv_newmortal();
 	    sv_setref_pv(ST(0), sclass, (void*)context);

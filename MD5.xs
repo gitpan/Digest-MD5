@@ -1,4 +1,4 @@
-/* $Id: MD5.xs,v 1.21 1999/02/27 21:25:31 gisle Exp $ */
+/* $Id: MD5.xs,v 1.22 1999/03/05 21:12:46 gisle Exp $ */
 
 /* 
  * This library is free software; you can redistribute it and/or
@@ -512,8 +512,8 @@ new(xclass)
 	MD5_CTX* context;
     PPCODE:
 	if (!SvROK(xclass)) {
-	    STRLEN na;
-	    char *sclass = SvPV(xclass, na);
+	    STRLEN my_na;
+	    char *sclass = SvPV(xclass, my_na);
 	    New(55, context, 1, MD5_CTX);
 	    ST(0) = sv_newmortal();
 	    sv_setref_pv(ST(0), sclass, (void*)context);
