@@ -1,4 +1,4 @@
-/* $Id: SHA1.xs,v 1.5 1999/07/28 10:36:56 gisle Exp $ */
+/* $Id: SHA1.xs,v 1.6 2000/09/18 14:27:53 gisle Exp $ */
 
 #ifdef __cplusplus
 extern "C" {
@@ -302,11 +302,14 @@ static void sha_final(unsigned char digest[20], SHA_INFO *sha_info)
 
 
 /*----------------------------------------------------------------*/
+#ifndef INT2PTR
+#define INT2PTR(any,d)	(any)(d)
+#endif
 
 static SHA_INFO* get_sha_info(SV* sv)
 {
     if (sv_derived_from(sv, "Digest::SHA1"))
-	return (SHA_INFO*)SvIV(SvRV(sv));
+	return INT2PTR(SHA_INFO*, SvIV(SvRV(sv)));
     croak("Not a reference to a Digest::SHA1 object");
     return (SHA_INFO*)0; /* some compilers insist on a return value */
 }

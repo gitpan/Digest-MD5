@@ -1,10 +1,10 @@
-/* $Id: MD5.xs,v 1.25 2000/08/18 08:46:36 gisle Exp $ */
+/* $Id: MD5.xs,v 1.26 2000/09/18 14:27:44 gisle Exp $ */
 
 /* 
  * This library is free software; you can redistribute it and/or
  * modify it under the same terms as Perl itself.
  * 
- *  Copyright 1998 Gisle Aas.
+ *  Copyright 1998-2000 Gisle Aas.
  *  Copyright 1995-1996 Neil Winton.
  *  Copyright 1991-1992 RSA Data Security, Inc.
  *
@@ -417,13 +417,16 @@ MD5Final(U8* digest, MD5_CTX *ctx)
 #endif
 }
 
+#ifndef INT2PTR
+#define INT2PTR(any,d)	(any)(d)
+#endif
 
 static MD5_CTX* get_md5_ctx(SV* sv)
 {
     if (SvROK(sv)) {
 	sv = SvRV(sv);
 	if (SvIOK(sv)) {
-	    MD5_CTX* ctx = (MD5_CTX*)SvIV(sv);
+	    MD5_CTX* ctx = INT2PTR(MD5_CTX*, SvIV(sv));
 	    if (ctx && ctx->signature == MD5_CTX_SIGNATURE) {
 		return ctx;
             }
