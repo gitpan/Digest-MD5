@@ -1,3 +1,27 @@
+2001/03/17
+
+This is the Digest-MD5 distribution with shared libraries compiled for
+MacPerl.  Shared libraries run only on PPC and CFM68K versions, not
+non-CFM 68K versions.
+
+This was compiled with Codewarrior IDE. Passed all tests on PPC and CFM68K.
+
+The original of the changed files are in Mac_changed.sit.
+
+Best installed using cpan-mac, either with the CPAN shell, or the installme
+droplet.  From the CPAN shell, type:
+
+    cpan> install K/KI/KIMURA/Digest-MD5-2.13-bin-1-Mac.tgz
+
+Also, see the MMP page:
+
+    http://pudge.net/mmp/
+
+--
+KIMURA Takeshi
+mailto:kimura@cpan.org
+
+#===================================
 The Digest::MD5 module allows you to use the RSA Data Security
 Inc. MD5 Message Digest algorithm from within Perl programs.  The
 algorithm takes as input a message of arbitrary length and produces as

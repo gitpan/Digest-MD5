@@ -34,6 +34,11 @@
  * documentation and/or software.
  */
 
+#include <ConditionalMacros.h>
+#if PRAGMA_IMPORT
+#pragma import on
+#endif
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -42,6 +47,10 @@ extern "C" {
 #include "XSUB.h"
 #ifdef __cplusplus
 }
+#endif
+
+#if PRAGMA_IMPORT
+#pragma import off
 #endif
 
 /*#define MD5_DEBUG /**/
