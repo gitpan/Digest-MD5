@@ -1,4 +1,12 @@
-1999-06-28   Gisle Aas <gisle@aas.no>
+1999-08-06   Gisle Aas <gisle@aas.no>
+
+   Release 2.09
+
+   Documentation update.
+
+
+
+1999-07-28   Gisle Aas <gisle@aas.no>
 
    Release 2.08
 
@@ -17,7 +25,7 @@
    SHA module did.
 
    The module should now work better when liked statically with perl,
-   because we know use a safer module-loaded test in Digest.pm.
+   because we now use a safer module-loaded test in Digest.pm.
 
    Assume we know the outcome of the alignment test on VMS. Patch by
    Chuck Lane <lane@duphy4.physics.drexel.edu>
