@@ -1,4 +1,4 @@
-/* $Id: MD5.xs,v 1.20 1998/12/18 13:08:29 aas Exp $ */
+/* $Id: MD5.xs,v 1.21 1999/02/27 21:25:31 gisle Exp $ */
 
 /* 
  * This library is free software; you can redistribute it and/or
@@ -42,11 +42,6 @@ extern "C" {
 #include "XSUB.h"
 #ifdef __cplusplus
 }
-#endif
-
-#include "patchlevel.h"
-#if PATCHLEVEL < 5 && SUBVERSION < 5
-   #define PL_na na
 #endif
 
 /*#define MD5_DEBUG /**/
@@ -517,7 +512,8 @@ new(xclass)
 	MD5_CTX* context;
     PPCODE:
 	if (!SvROK(xclass)) {
-	    char *sclass = SvPV(xclass, PL_na);
+	    STRLEN na;
+	    char *sclass = SvPV(xclass, na);
 	    New(55, context, 1, MD5_CTX);
 	    ST(0) = sv_newmortal();
 	    sv_setref_pv(ST(0), sclass, (void*)context);
