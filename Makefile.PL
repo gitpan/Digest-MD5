@@ -12,7 +12,7 @@ WriteMakefile(
     @extra,
     'dist'         => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
 );
-exit;
+
 
 #--------------
 
@@ -22,6 +22,10 @@ sub free_u32_alignment
     $|=1;
     print "Testing alignment requirements for U32... ";
     return 1 if $^O eq 'VMS';
+    if ($^O eq 'MacOS') { # add this, to avoid the U32 tests
+         print " skipped on MacOS.\n";
+         return 1 ;
+   }
 
     open(ALIGN_TEST, ">u32align.c") or die "$!";
     print ALIGN_TEST <<'EOT'; close(ALIGN_TEST);

@@ -1,3 +1,34 @@
+2001/01/17
+
+This is the Digest-MD5 distribution with shared libraries compiled for
+MacPerl.  Shared libraries run only on PPC and CFM68K versions, not
+non-CFM 68K versions.
+
+This was compiled with Codewarrior.  Passed all tests on PPC.
+The CFM68K version is not fully tested.  Let me know of any problems.
+
+The original of the changed files are in Mac_changed.sit.
+The badfile.t files are changed since MacPerl prepends '# ' to the
+exception string (in $@).
+
+The makefiles and source files are in Mac_source_makefile.sit.  Makefiles
+are created by MakeMaker and the source files are created by xsubpp_app.
+The source files are modified to be build for MacCFM68K. For furthure
+information, take a look at Building With Apple MPW -> MacCFM68K of mpxstut
+¥ Building Shared Libraries for MacPerl; available at
+
+http://macperl.com/depts/Tutorials/XS/Mac_XS.sea.hqx
+
+2001/01/15	Original distribution
+2001/01/17	Changed to avoid warnings when installed via Chris Nandor's
+			installme.plx
+
+--
+KIMURA Takeshi
+mailto:kim@arch.waseda.ac.jp
+
+#===================================
+
 Digest::*
 ---------
 

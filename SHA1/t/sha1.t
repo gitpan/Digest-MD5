@@ -18,7 +18,7 @@ print "ok 4\n";
 open(FILE, ">stest$$.txt") || die;
 binmode(FILE);
 for (1..512) {
-    print FILE "This is line $_\n";
+    print FILE "This is line $_\012";
 }
 close(FILE);
 
