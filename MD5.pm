@@ -3,7 +3,7 @@ package Digest::MD5;
 use strict;
 use vars qw($VERSION @ISA @EXPORT_OK);
 
-$VERSION = '2.34';  # $Date: 2005/11/26 09:58:12 $
+$VERSION = '2.35';  # $Date: 2005/11/26 11:09:06 $
 
 require Exporter;
 *import = \&Exporter::import;
@@ -207,7 +207,7 @@ Note that the C<digest> operation is effectively a destructive,
 read-once operation. Once it has been performed, the C<Digest::MD5>
 object is automatically C<reset> and can be used to calculate another
 digest value.  Call $md5->clone->digest if you want to calculate the
-digest without reseting the digest state.
+digest without resetting the digest state.
 
 =item $md5->hexdigest
 
