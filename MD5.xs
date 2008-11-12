@@ -1,5 +1,3 @@
-/* $Id: MD5.xs,v 1.45 2005/11/26 11:06:20 gisle Exp $ */
-
 /* 
  * This library is free software; you can redistribute it and/or
  * modify it under the same terms as Perl itself.
@@ -587,7 +585,7 @@ clone(self)
 	SV* self
     PREINIT:
 	MD5_CTX* cont = get_md5_ctx(aTHX_ self);
-	char *myname = sv_reftype(SvRV(self),TRUE);
+	const char *myname = sv_reftype(SvRV(self),TRUE);
 	MD5_CTX* context;
     PPCODE:
 	New(55, context, 1, MD5_CTX);
@@ -713,8 +711,8 @@ md5(...)
 		}
 	    }
 	    if (msg) {
-		char *f = (ix == F_BIN) ? "md5" :
-                          (ix == F_HEX) ? "md5_hex" : "md5_base64";
+	        const char *f = (ix == F_BIN) ? "md5" :
+		                (ix == F_HEX) ? "md5_hex" : "md5_base64";
 	        warn("&Digest::MD5::%s function %s", f, msg);
 	    }
 	}
