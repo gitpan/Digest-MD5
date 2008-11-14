@@ -1,14 +1,15 @@
 --- #YAML:1.0
 name:                Digest-MD5
-version:             2.37
+version:             2.38
 abstract:            ~
-license:             ~
+license:             perl
 author:              ~
-generated_by:        ExtUtils::MakeMaker version 6.42_01
+generated_by:        ExtUtils::MakeMaker version 6.4401
 distribution_type:   module
 requires:     
     Digest::base:                  1.00
     File::Spec:                    0
+    XSLoader:                      0
 meta-spec:
     url:     http://module-build.sourceforge.net/META-spec-v1.3.html
     version: 1.3
